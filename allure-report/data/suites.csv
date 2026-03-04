@@ -1,0 +1,3 @@
+"DESCRIPTION","DURATION IN MS","NAME","PARENT SUITE","START TIME","STATUS","STOP TIME","SUB SUITE","SUITE","TEST CLASS","TEST METHOD"
+"","18752","Access a Product via category after applying multiple filters","Apply filters to access products on eBay","2026-02-12","passed","2026-02-12","","","",""
+"","7112","Access a Product via Search","Search products on eBay","2026-02-12","passed","2026-02-12","","","",""

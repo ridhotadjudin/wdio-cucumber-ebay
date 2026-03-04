@@ -1,0 +1,4 @@
+{
+  "using": "xpath",
+  "value": "(//ul[@class=\"srp-results srp-list clearfix\"]//div[@class=\"su-card-container__header\"]//div[contains(translate(., \"ABCDEFGHIJKLMNOPQRSTUVWXYZ\", \"abcdefghijklmnopqrstuvwxyz\"), \"macbook\")])[1]"
+}
