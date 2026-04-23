@@ -1,140 +1,197 @@
+[![WebDriverIO](https://img.shields.io/badge/WebDriverIO-v9.24.0-EA5906?style=flat-square&logo=webdriverio&logoColor=white)](https://webdriver.io/)
+[![Cucumber](https://img.shields.io/badge/Cucumber-BDD-23D96C?style=flat-square&logo=cucumber&logoColor=white)](https://cucumber.io/)
+[![JavaScript](https://img.shields.io/badge/JavaScript-ES2022-F7DF1E?style=flat-square&logo=javascript&logoColor=black)](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
+[![Allure](https://img.shields.io/badge/Allure-v2.27.0-FF6347?style=flat-square&logo=qameta&logoColor=white)](https://allurereport.org/)
+[![License](https://img.shields.io/badge/License-MIT-blue?style=flat-square)](LICENSE)
 
-# eBay Automation Testing
+# 🛒 wdio-cucumber-ebay
 
-## Introduction
-This project is created involve automating three test scenarios on the eBay website using **WebDriverIO**, **Cucumber**, and **JavaScript** (NodeJS). The tests are structured using **BDD (Behavior-Driven Development)** and **WebDriverIO** test automation framework.
-
-### Scenarios Tested:
-1. **Access a Product via category after applying multiple filters**.
-2. **Access a Product via Search**.
-3. **Checkout Product as Guest**.
-
-The tests are written to verify the functionality of category-based navigation, filters, and the search functionality on eBay.
-
-## Tech Stack
-- **Programming Language**: JavaScript (NodeJS)
-- **Test Automation Framework**: WebDriverIO
-- **BDD Framework**: Cucumber
-- **Reporting**: Allure for test reports
-
-## Project Setup
-
-### Prerequisites
-Ensure that you have **Node.js** (version 14.x or higher) installed on your local machine. 
-
-### Steps to Setup
-
-1. **Clone the repository** or extract the zip folder to your local machine.
-
-2. **Install dependencies**:
-
-   Navigate to the project folder and install the required dependencies by running:
-
-   ```bash
-   npm install
-   ```
-
-   This will install **WebDriverIO**, **Cucumber**, **Allure Reporter**, and other dependencies specified in `package.json`.
-
-3. **Set up WebDriverIO configuration**:
-
-   The **`wdio.conf.js`** configuration file is already set up to run tests using the Chrome browser.
-
-4. **Running Tests**:
-
-   - To run the tests using WebDriverIO, use the following script:
-
-     ```bash
-     npm run test
-     ```
-
-     This will trigger the `wdio` command and start executing your test scenarios.
-
-5. **Generating and Viewing Allure Reports**:
-
-   - To generate the Allure report after running tests, use:
-
-     ```bash
-     npm run allure:generate
-     ```
-
-   - To open the Allure report, use:
-
-     ```bash
-     npm run allure:open
-     ```
-
-   - To serve the report via a local server (optional):
-
-     ```bash
-     npm run allure:serve
-     ```
-
-   This will generate, open, or serve the Allure report based on your command.
-
-## Scenarios Covered
-
-### Scenario 1: Access a Product via Category After Applying Multiple Filters
-- **Steps**:
-  1. Go to **www.ebay.com**.
-  2. Navigate to the **Electronics** category > **Cell Phones & Accessories**.
-  3. In the left-hand navigation section, click on **Cell Phones & Smartphones**.
-  4. Click **All Filters** at the end of the filter dropdowns.
-  5. Apply three filters: **Condition**, **Price**, and **Item Location**.
-  6. Verify that the filters are applied successfully and the correct products are displayed.
-
-### Scenario 2: Access a Product via Search
-- **Steps**:
-  1. Go to **www.ebay.com**.
-  2. Enter a search term (e.g., **MacBook**) in the search bar.
-  3. Change the search category to **Computers/Tablets & Networking**.
-  4. Click **Search**.
-  5. Verify that the page loads completely.
-  6. Verify that the first result's name matches the search string.
-
-### Scenario 3: Checkout as Guest on eBay
-- **Steps**:
-  1. Go to **www.ebay.com**.
-  2. Enter a search term (e.g., **Laptop**) in the search bar.
-  3. Celect the product item.
-  4. Verify the dynamic element.
-  5. Navigate to Checkout as Guest page.
-  6. Fill and verify all the input data.
-
-## Code Structure
-
-### File Structure:
-
-```
-/project-root
-    /features                   # Contains feature files for BDD (Cucumber)
-        /01_filters.feature
-        /02_search.feature
-        /03_checkout.feature
-        /stepDefinitions        # Contains step definition files for the BDD framework
-            /filterSteps.js
-            /searchSteps.js
-            /checkoutSteps.js
-        /pageObjects            # Page Object Model for reusable page methods
-            /homePage.js
-            /searchPage.js
-            /filterPage.js
-            /checkoutPage.js
-    wdio.conf.js            # WebDriverIO configuration file
-    package.json            # Dependencies and project metadata
-    allure-results          # Results from test executions (can be generated)
-    allure-report           # Allure report folder (generated after tests)
-    README.md               # This readme file
-```
-
-- **`/features/`**: Contains feature files written in Gherkin syntax to describe the test scenarios.
-- **`/stepDefinitions/`**: Contains step definitions that map the Gherkin steps to WebDriverIO commands.
-- **`/pages/`**: Implements the Page Object Model to make the code modular and reusable. Each page contains functions that represent interactions with the page elements.
-
-## Assumptions
-- All test scripts assume that eBay’s website is accessible and that the category and filter options remain consistent.
-- The tests are designed to be robust but may need adjustments if the website's structure changes.
+End-to-end test automation framework for the **eBay e-commerce platform**, built with **WebDriverIO v9** and **Cucumber BDD** to validate critical shopping flows including product filtering, search, and checkout.
 
 ---
 
-Feel free to contribute!
+## 📑 Table of Contents
+
+- [Features](#-features)
+- [Tech Stack](#-tech-stack)
+- [Project Structure](#-project-structure)
+- [Prerequisites](#-prerequisites)
+- [Getting Started](#-getting-started)
+- [Test Scenarios](#-test-scenarios)
+- [Design Patterns](#-design-patterns)
+- [Reports](#-reports)
+- [Author](#-author)
+
+---
+
+## ✨ Features
+
+- **Cucumber BDD** — human-readable Gherkin scenarios for living documentation
+- **Page Object Model** — clean separation of test logic and page interactions
+- **Allure Reporting** — rich, interactive HTML reports with screenshots and step details
+- **Chrome Headless** — fast, CI-friendly execution at 1366×768 viewport
+- **Tag-Based Execution** — run targeted suites using the `@pilot` tag
+- **Multi-Filter Validation** — verifies complex filter combinations on eBay listings
+- **Guest Checkout Flow** — end-to-end checkout without requiring authentication
+
+---
+
+## 🛠 Tech Stack
+
+| Technology | Version | Purpose |
+|---|---|---|
+| WebDriverIO | 9.24.0 | Browser automation framework |
+| Cucumber | 11.x | BDD test runner with Gherkin syntax |
+| JavaScript | ES2022 | Programming language |
+| Allure Reporter | 2.27.0 | Test report generation and visualization |
+| Google Chrome | Headless | Target browser (1366×768) |
+| Node.js | ≥ 18.x | Runtime environment |
+
+---
+
+## 📁 Project Structure
+
+```
+wdio-cucumber-ebay/
+├── features/
+│   ├── 01_filters.feature
+│   ├── 02_search.feature
+│   ├── 03_checkout.feature
+│   └── step-definitions/
+│       ├── filterSteps.js
+│       ├── searchSteps.js
+│       └── checkoutSteps.js
+├── pages/
+│   ├── homePage.js
+│   ├── searchPage.js
+│   ├── filterPage.js
+│   └── checkoutPage.js
+├── allure-results/
+├── allure-report/
+├── wdio.conf.js
+├── package.json
+└── README.md
+```
+
+---
+
+## 📋 Prerequisites
+
+- **Node.js** ≥ 18.x — [Download](https://nodejs.org/)
+- **npm** ≥ 9.x (bundled with Node.js)
+- **Google Chrome** (latest stable)
+- **Java JDK** ≥ 11 (required by Allure CLI)
+- **Allure CLI** — `npm install -g allure-commandline`
+
+---
+
+## 🚀 Getting Started
+
+### Installation
+
+```bash
+git clone https://github.com/ridhotadjudin/wdio-cucumber-ebay.git
+cd wdio-cucumber-ebay
+npm install
+```
+
+### Run Tests
+
+```bash
+# Execute the full test suite
+npm test
+
+# Run via WebDriverIO directly
+npm run wdio
+```
+
+### Generate & View Reports
+
+```bash
+# Generate Allure report from results
+npm run allure:generate
+
+# Open the report in the default browser
+npm run allure:open
+
+# Generate and serve the report in one step
+npm run allure:serve
+```
+
+---
+
+## 🧪 Test Scenarios
+
+| # | Scenario | Type | Description |
+|---|---|---|---|
+| 1 | Filter Electronics › Cell Phones | Multi-Filter | Navigate to Electronics, apply the Cell Phones & Smartphones category filter, then layer additional filters (brand, condition, price range) and verify the refined listing results |
+| 2 | Search MacBook with Category Change | Search | Enter "MacBook" in the global search bar, switch the category dropdown mid-search, submit, and validate that results reflect the updated category context |
+| 3 | Checkout Laptop as Guest | Checkout | Search for a laptop, select a listing, add it to cart, proceed to checkout, fill in guest shipping and payment data, and verify the order summary |
+
+---
+
+## 🏗 Design Patterns
+
+### Page Object Model (POM)
+
+Each page of the eBay application is represented by a dedicated class that encapsulates its selectors and interaction methods. This keeps tests maintainable — when the UI changes, only the relevant page object needs updating.
+
+```
+pages/
+├── homePage.js       → Global navigation, search bar, category selector
+├── searchPage.js     → Search results, sorting, pagination
+├── filterPage.js     → Sidebar filters, applied filter chips, result count
+└── checkoutPage.js   → Cart summary, guest form, payment fields, order review
+```
+
+### Behavior-Driven Development (BDD) with Cucumber
+
+Test scenarios are written in **Gherkin** syntax, making them readable by all stakeholders — developers, QA engineers, and product owners alike.
+
+```gherkin
+Feature: Product Search
+
+  @pilot
+  Scenario: Search MacBook with category change
+    Given I am on the eBay home page
+    When I type "MacBook" in the search bar
+    And I change the category to "Computers & Tablets"
+    And I click the search button
+    Then the results should display items in "Computers & Tablets"
+    And each listing title should contain "MacBook"
+```
+
+---
+
+## 📊 Reports
+
+This framework uses **Allure v2.27.0** for reporting, providing a comprehensive view of every test run.
+
+| Command | Description |
+|---|---|
+| `npm run allure:generate` | Compiles `allure-results/` into a static HTML report in `allure-report/` |
+| `npm run allure:open` | Opens the previously generated report in the default browser |
+| `npm run allure:serve` | Generates a temporary report and launches a local server to view it |
+
+**Report highlights:**
+
+- 📸 Step-by-step screenshots on failure
+- 📝 Gherkin steps mapped to report entries
+- 📈 Historical trend charts across runs
+- 🏷️ Tag-based filtering (`@pilot`)
+- ⏱️ Execution duration per scenario and step
+
+---
+
+## 👤 Author
+
+**Ridho Tadjudin** — QA Engineer
+
+- 🌐 Website: [ridhotadjudin.id](https://ridhotadjudin.id)
+- 💻 GitHub: [@ridhotadjudin](https://github.com/ridhotadjudin)
+
+---
+
+<p align="center">
+  Built with ☕ and curiosity — automated testing for a better web.
+</p>
