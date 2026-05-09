@@ -1,0 +1,1 @@
+[{"uid":"b8e3e25ffee7782","name":"Access a Product via category after applying multiple filters","time":{"start":1770905666716,"stop":1770905685468,"duration":18752},"status":"passed","severity":"normal"},{"uid":"776314888169eb7f","name":"Access a Product via Search","time":{"start":1770905688429,"stop":1770905695541,"duration":7112},"status":"passed","severity":"normal"}]
