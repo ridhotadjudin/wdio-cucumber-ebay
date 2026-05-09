@@ -192,6 +192,12 @@ This framework uses **Allure v2.27.0** for reporting, providing a comprehensive 
 
 ---
 
+## 📄 License
+
+This project is licensed under the MIT License — see the [LICENSE](LICENSE) file for details.
+
+---
+
 <p align="center">
   Built with ☕ and curiosity — automated testing for a better web.
 </p>
