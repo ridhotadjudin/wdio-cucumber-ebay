@@ -201,3 +201,4 @@ This project is licensed under the MIT License — see the [LICENSE](LICENSE) fi
 <p align="center">
   Built with ☕ and curiosity — automated testing for a better web.
 </p>
+
